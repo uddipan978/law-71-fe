@@ -1,0 +1,44 @@
+<svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_744_3108" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="30" y="8" width="10" height="15">
+<path d="M39.9997 22.0049C39.9997 16.7709 37.7625 12.0557 34.1997 8.77002L30.8101 12.4456C33.3895 14.8244 34.9997 18.2247 34.9997 22.0049H39.9997Z" fill="url(#paint0_linear_744_3108)"/>
+</mask>
+<g mask="url(#mask0_744_3108)">
+<rect x="4.00006" y="4" width="36" height="36" fill="#2BA168"/>
+</g>
+<mask id="mask1_744_3108" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="22" y="22" width="18" height="18">
+<path d="M22 40C31.9411 40 40 31.9411 40 22H35C35 29.1797 29.1797 35 22 35V40Z" fill="url(#paint1_linear_744_3108)"/>
+</mask>
+<g mask="url(#mask1_744_3108)">
+<rect x="4" y="4" width="36" height="36" fill="#2BA168"/>
+</g>
+<mask id="mask2_744_3108" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="22" width="18" height="18">
+<path d="M4 22C4 31.9411 12.0589 40 22 40V35C14.8203 35 9 29.1797 9 22H4Z" fill="url(#paint2_linear_744_3108)"/>
+</mask>
+<g mask="url(#mask2_744_3108)">
+<rect x="4" y="4" width="36" height="36" fill="#2BA168"/>
+</g>
+<mask id="mask3_744_3108" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="21" height="18">
+<path d="M9 22C9 14.8203 14.8203 9 22 9C23.3807 9 24.5 7.88071 24.5 6.5C24.5 5.11929 23.3807 4 22 4C12.0589 4 4 12.0589 4 22H9Z" fill="url(#paint3_linear_744_3108)"/>
+</mask>
+<g mask="url(#mask3_744_3108)">
+<rect x="4" y="4" width="36" height="36" fill="#2BA168"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_744_3108" x1="35.1903" y1="22.0049" x2="30.0875" y2="13.8401" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.08"/>
+<stop offset="1" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_744_3108" x1="22" y1="34.6002" x2="34.6002" y2="22.0006" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.35"/>
+<stop offset="1" stop-opacity="0.08"/>
+</linearGradient>
+<linearGradient id="paint2_linear_744_3108" x1="9.40023" y1="22" x2="22.0004" y2="34.5998" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.65"/>
+<stop offset="1" stop-opacity="0.35"/>
+</linearGradient>
+<linearGradient id="paint3_linear_744_3108" x1="24.5945" y1="9.40081" x2="8.60119" y2="21.2615" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.65"/>
+</linearGradient>
+</defs>
+</svg>
