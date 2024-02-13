@@ -127,8 +127,8 @@ const colors = {
     }
   },
   brand: {
-    dark: "#2BA168",
-    light: "#2BA168"
+    dark: "#4a8ee4",
+    light: "#4a8ee4"
   }
 }
 export default colors

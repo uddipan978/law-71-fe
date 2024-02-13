@@ -24,13 +24,13 @@ const IndividualChatPage: FC = () => {
   const chat_id = router.query.id as string
   const [chat, setChat] = useState<string>("")
   const [messages, setMessages] = useState<CHAT_HISTORY[]>([])
+  const [currentMessageId, setCurrentMessageId] = useState<null | string>(null)
   //new chat
-  const { messageStream, isStreaming, handleStartStreaming } = useStreamChats()
+  const { messageStream, isStreaming, isStreamFinished, handleStartStreaming } = useStreamChats()
   const initiateChatStreaming = (_prompt: string) => {
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      generateChatObject(parseInt(chat_id), _prompt, "chatAI") as CHAT_HISTORY
-    ])
+    const newMessage = generateChatObject(parseInt(chat_id), _prompt, "chatAI") as CHAT_HISTORY
+    setMessages((prevMessages) => [...prevMessages, newMessage])
+    setCurrentMessageId(newMessage.message_id)
     handleStartStreaming(CHAT_STREAM_API_ROUTE, {
       text: _prompt,
       init: messages.length === 0
@@ -52,6 +52,21 @@ const IndividualChatPage: FC = () => {
       })
     }
   }, [messageStream, messages, chatBoxContainerRef])
+  useEffect(() => {
+    if (isStreamFinished && messages.length) {
+      const _messages = [...messages]
+      const index = _messages.findIndex((message) => message.message_id === currentMessageId)
+      if (index > -1) {
+        _messages[index].conversations.map((conv) => {
+          if (conv.metadata.initiator === "ai" && conv.metadata.isGenerating) {
+            conv.metadata.isGenerating = false
+            conv.content = messageStream
+          }
+        })
+        setMessages([..._messages])
+      }
+    }
+  }, [isStreamFinished])
   return (
     <BlankLayout>
       <Head>
