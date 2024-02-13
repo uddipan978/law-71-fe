@@ -21,38 +21,3 @@ export const THEME_OPTIONS = [
     icon: systemThemeIcon
   }
 ]
-export const POSITIVE_FEEDBACK_OPTIONS = [
-  {
-    label: "Correct",
-    value: "correct"
-  },
-  {
-    label: "Easy to understand",
-    value: "easy-to-understand"
-  },
-  {
-    label: "Complete",
-    value: "complete"
-  }
-]
-export const NEGATIVE_FEEDBACK_OPTIONS = [
-  {
-    label: "Harmful/Unsafe",
-    value: "harmful"
-  },
-  {
-    label: "Inaccurate",
-    value: "inaccurate"
-  },
-  {
-    label: "Unhelpful",
-    value: "unhelpful"
-  }
-]
-export const EMPTY_OPTION = [
-  {
-    label: "No Option Found",
-    value: "",
-    disabled: true
-  }
-]

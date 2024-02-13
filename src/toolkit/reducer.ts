@@ -1,9 +1,7 @@
 import { combineReducers } from "redux"
-import chatReducer from "./chatAI/chat.slice"
 import { commonApi } from "./common.api"
 
 const rootReducer = combineReducers({
-  [commonApi.reducerPath]: commonApi.reducer,
-  chatAI: chatReducer,
+  [commonApi.reducerPath]: commonApi.reducer
 })
 export default rootReducer

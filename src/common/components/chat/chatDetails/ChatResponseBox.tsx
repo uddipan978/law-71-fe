@@ -1,42 +1,22 @@
-import React, { FC, memo, useState, useEffect, Fragment } from "react";
-import Image from "next/image";
-import Markdown from "react-markdown";
+import React, { FC, memo, useState, useEffect } from "react"
+import Image from "next/image"
+import Markdown from "react-markdown"
 //Icons
-import ChatLoadingIcon from "@/assets/images/icons/chat-loading-icon.svg";
-//Components
-import AnswerActionBox from "@/common/components/chat/chatDetails/AnswerActionBox";
-import RatingBox from "@/common/components/chat/chatDetails/RatingBox";
-import RegenAnswerRatingBox from "./RegenAnswerRatingBox";
-import ChatPaginator from "@/common/atoms/ChatPaginator";
+import ChatLoadingIcon from "@/assets/images/icons/chat-loading-icon.svg"
 //utils
-import { trim, map } from "lodash";
-import { formatChatMessage } from "@/common/utils";
+import { trim } from "lodash"
+import { formatChatMessage } from "@/common/utils"
 //types
-import { CHAT_RESPONSE_BOX, CHAT } from "@/types";
-const ChatResponseBox: FC<CHAT_RESPONSE_BOX> = ({
-  message_id,
-  messageStream,
-  feedbackAction,
-  showRegenRatingBox,
-  handleOpenFeedbackBox,
-  handleRegenerate,
-  conversations,
-}) => {
-  const [selectedConversation, setSelectedConversation] = useState<CHAT | null>(null);
-  const [selectedConversationIndex, setSelectedConversationIndex] = useState(-1);
-  const onChangePagination = (point_id: string) => {
-    setSelectedConversation(conversations.find((conv) => conv.point_id === point_id) ?? null);
-    setSelectedConversationIndex(conversations.findIndex((conv) => conv.point_id === point_id));
-  };
-
+import { CHAT_RESPONSE_BOX, CHAT } from "@/types"
+const ChatResponseBox: FC<CHAT_RESPONSE_BOX> = ({ messageStream, conversations }) => {
+  const [selectedConversation, setSelectedConversation] = useState<CHAT | null>(null)
   useEffect(() => {
     if (conversations.length) {
-      const lastIndex = conversations.length - 1;
-      const latestConv = conversations[lastIndex];
-      setSelectedConversation(latestConv);
-      setSelectedConversationIndex(lastIndex);
+      const lastIndex = conversations.length - 1
+      const latestConv = conversations[lastIndex]
+      setSelectedConversation(latestConv)
     }
-  }, [conversations]);
+  }, [conversations])
 
   return (
     <div className='flex mb-6'>
@@ -64,47 +44,13 @@ const ChatResponseBox: FC<CHAT_RESPONSE_BOX> = ({
                     ? messageStream
                     : formatChatMessage(trim(selectedConversation.content))}
                 </Markdown>
-                {!selectedConversation.metadata.isGenerating && (
-                  <Fragment>
-                    <div className='flex items-center gap-3'>
-                      {conversations.length > 1 && (
-                        <ChatPaginator
-                          data={map(conversations, "point_id")}
-                          selectedPoint={selectedConversation?.point_id ?? null}
-                          onChange={onChangePagination}
-                        />
-                      )}
-                      <AnswerActionBox
-                        feedbackAction={feedbackAction}
-                        content={selectedConversation.content}
-                        onFeedbackBtnClick={(action) => handleOpenFeedbackBox(action)}
-                        onRegenerateBtnClick={() => handleRegenerate(selectedConversation.point_id)}
-                      />
-                    </div>
-                    {showRegenRatingBox && selectedConversationIndex > 0 && (
-                      <RegenAnswerRatingBox
-                        message_id={message_id}
-                        point_id={selectedConversation.point_id}
-                        onClose={() => setSelectedConversationIndex(-1)}
-                      />
-                    )}
-                  </Fragment>
-                )}
               </>
             )}
           </div>
         )}
-        {feedbackAction !== "" && selectedConversation !== null && (
-          <RatingBox
-            feedbackAction={feedbackAction}
-            onClose={() => handleOpenFeedbackBox("")}
-            message_id={message_id}
-            point_id={selectedConversation?.point_id}
-          />
-        )}
       </div>
     </div>
-  );
-};
-ChatResponseBox.displayName = "ChatResponseBox";
-export default memo(ChatResponseBox);
+  )
+}
+ChatResponseBox.displayName = "ChatResponseBox"
+export default memo(ChatResponseBox)

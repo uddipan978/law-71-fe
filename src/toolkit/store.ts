@@ -2,13 +2,13 @@ import { configureStore } from "@reduxjs/toolkit"
 import { persistStore, persistReducer } from "redux-persist"
 import storage from "redux-persist/lib/storage"
 import rootReducer from "./reducer"
-import { commonApiAuthMiddleware, commonApi } from "./common.api"
+import { commonApi } from "./common.api"
 
 const persistConfig = {
   key: "root",
   version: 2,
   storage,
-  whitelist: [],
+  whitelist: []
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
@@ -17,9 +17,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false
-    })
-      .concat(commonApi.middleware)
-      .concat(commonApiAuthMiddleware)
+    }).concat(commonApi.middleware)
 })
 
 const persistor = persistStore(store)
